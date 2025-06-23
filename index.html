@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<title>To-do list App</title>
+		<link
+			rel="stylesheet"
+			href="main.css" />
+	</head>
+	<body>
+		<div id="todo-list">
+			<div class="header">
+				<h1>{{ header }}</h1>
+				<button
+					v-if="editing"
+					@click="DoEdit(false)"
+					class="btn btn-cancel">
+					Отменить
+				</button>
+				<button
+					v-else
+					@click="DoEdit(true)"
+					class="btn btn-primary">
+					Добавить занятие
+				</button>
+			</div>
+			<div
+				v-if="editing"
+				class="add-do-form">
+				<input
+					@keyup.enter="saveDo"
+					v-model="newDo"
+					type="text"
+					placeholder="Сохранить Занятие" />
+				<p class="counter">{{ characterCount }}/200</p>
+				<label class="custom-checkbox">
+					<input
+						type="checkbox"
+						v-model="newDoHighPriority" />
+					<span>Выделить</span>
+				</label>
+				<button
+					:disabled="newDo.length < 5"
+					@click="saveDo"
+					class="btn btn-primary">
+					Сохранить дело
+				</button>
+			</div>
+			<p v-if="Dos.length === 0">Список пуст</p>
+			<ul>
+				<li
+					v-for="item in Dos"
+					@click="togglePurchased(item)"
+					:key="item.id"
+					:class="{strikeout: item.purchased, priority: item.highPriority}"
+					class="static-class">
+					{{ item.label }}
+				</li>
+			</ul>
+		</div>
+
+		<script src="https://unpkg.com/vue@3"></script>
+		<script>
+			const ToDolistApp = Vue.createApp({
+				data() {
+					return {
+						header: "Список дел",
+						editing: false,
+						newDo: "",
+						newDoHighPriority: false,
+						Dos: [
+							{
+								id: 1,
+								label: "Постирать вещи",
+								purchased: true,
+								highPriority: false,
+							},
+							{
+								id: 2,
+								label: "Сходить в зал",
+								purchased: true,
+								highPriority: false,
+							},
+							{
+								id: 3,
+								label: "Разработать дизайн сайта",
+								purchased: false,
+								highPriority: true,
+							},
+							{
+								id: 4,
+								label: "Разработать сайт",
+								purchased: false,
+								highPriority: true,
+							},
+						],
+					}
+				},
+				computed: {
+					characterCount() {
+						return this.newDo.length
+					},
+				},
+				methods: {
+					saveDo() {
+						if (this.newDo.length < 5) return
+						this.Dos.push({
+							id: this.Dos.length + 1,
+							label: this.newDo,
+							highPriority: this.newDoHighPriority,
+							purchased: false,
+						})
+						this.newDo = ""
+						this.newDoHighPriority = false
+					},
+					DoEdit(editing) {
+						this.editing = editing
+						this.newDo = ""
+						this.newDoHighPriority = false
+					},
+					togglePurchased(item) {
+						item.purchased = !item.purchased
+					},
+				},
+			}).mount("#todo-list")
+		</script>
+	</body>
+</html>

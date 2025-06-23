@@ -1,0 +1,240 @@
+/* Общие стили для body */
+body {
+	background: #eff8ff;
+	height: 100vh;
+	width: 100vw;
+	font-family: system-ui, BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; /* Добавлено для корректного расчёта размеров */
+}
+
+/* Счётчик символов */
+.counter {
+	font-size: 0.8rem;
+	padding: 0 10px;
+	color: #606f7b;
+}
+
+/* Основной контейнер */
+#todo-list {
+	background: #fff;
+	padding: 2rem;
+	margin: 1rem;
+	border-radius: 3px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+	width: 95%;
+	max-width: 900px;
+	box-sizing: border-box;
+}
+
+/* Заголовок */
+h1 {
+	color: #3d4852;
+	margin: 0;
+	font-weight: 700;
+}
+
+/* Список без маркеров */
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 1rem 0 0 0;
+}
+
+ul li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	cursor: pointer;
+	line-height: 1.75;
+	letter-spacing: 0.5px;
+	color: #3d4852;
+	font-size: 1.25rem;
+	transition: color 0.15s ease-in;
+	margin: 0.25rem 5rem;
+}
+
+ul li:first-child {
+	border-top: 1px dotted #22292f;
+}
+
+/* Ссылки */
+a {
+	color: #6cb2eb;
+	font-size: 1.25rem;
+	transition: color 0.15s ease-in;
+	margin-top: 0.5rem;
+	display: block;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #3490dc;
+}
+
+/* Элементы списка и параграфы */
+li,
+p {
+	display: flex;
+	align-items: center;
+	line-height: 1.75;
+	letter-spacing: 0.5px;
+	color: #3d4852;
+	font-size: 1.25rem;
+	cursor: pointer;
+	transition: color 0.15s ease-in;
+	margin: 0.25rem 0;
+}
+
+li:hover {
+	color: #22292f;
+}
+
+/* Отступы для чекбоксов внутри li */
+li input[type="checkbox"] {
+	margin: 0 0.5rem 0 0;
+	cursor: pointer;
+}
+
+/* Стили для span */
+span {
+	font-size: 14px;
+	padding: 5px;
+	font-weight: 600;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Стили для input и select внутри #todo-list */
+#todo-list input,
+#todo-list select {
+	width: 100%;
+	border-radius: 3px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: 1px solid #f1f5f8;
+	color: #606f7b;
+	padding: 0.5rem 0.75rem;
+	box-sizing: border-box;
+	font-size: 1rem;
+	letter-spacing: 0.5px;
+	margin: 0.5rem 0;
+	transition: border-color 0.15s ease-in;
+}
+
+#todo-list input:focus,
+#todo-list select:focus {
+	border-color: #6cb2eb;
+	outline: none;
+}
+
+/* Flex контейнеры */
+.add-do-form,
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem; /* Добавлен отступ между элементами */
+	flex-wrap: wrap; /* Для адаптивности */
+}
+
+/* Общие стили для input */
+input[type="text"] {
+	width: 70%;
+	border-radius: 3px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: 1px solid #f1f5f8;
+	color: #606f7b;
+	padding: 0.5rem 0.75rem;
+	box-sizing: border-box;
+	font-size: 1rem;
+	letter-spacing: 0.5px;
+	margin: 0.5rem 0;
+	transition: border-color 0.15s ease-in;
+}
+
+input[type="text"]:focus {
+	border-color: #6cb2eb;
+	outline: none;
+}
+
+.custom-checkbox {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 0.5rem;
+	font-size: 1.25rem;
+	color: #3d4852;
+}
+
+/* Увеличиваем чекбокс и задаём цвет выделения */
+.custom-checkbox input[type="checkbox"] {
+	transform: scale(1.5);
+	margin: 0;
+	cursor: pointer;
+	accent-color: #de751f;
+	margin-right: 0.5rem;
+}
+
+/* Кнопки */
+.btn {
+	border: none;
+	border-radius: 3px;
+	margin: auto 0;
+	padding: 0.5rem 0.75rem;
+	flex-shrink: 0;
+	cursor: pointer;
+	font-size: 0.9rem;
+	letter-spacing: 0.5px;
+	transition: background-color 0.15s ease-in;
+	user-select: none;
+}
+
+.btn[disabled] {
+	background: #8795a1;
+	cursor: not-allowed;
+}
+
+.btn[disabled]:hover {
+	background: #606f7b;
+}
+
+.btn-primary {
+	background: #6cb2eb;
+	color: #fff;
+}
+
+.btn-primary:hover:not([disabled]) {
+	background: #3490dc;
+}
+
+.btn-cancel {
+	background: lch(57.84% 67.44 30.37);
+	color: #fff;
+}
+
+.btn-cancel:hover {
+	background: #e3342f;
+	color: #fff;
+}
+
+/* Стили для перечёркнутых дел */
+.strikeout {
+	text-decoration: line-through;
+	color: #b8c2cc;
+}
+
+.strikeout:hover {
+	color: #8795a1;
+}
+
+/* Стили для приоритетных дел */
+.priority {
+	color: #de751f;
+	font-weight: 700;
+}
