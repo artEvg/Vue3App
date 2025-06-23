@@ -73,7 +73,7 @@ git clone (https://github.com/artEvg/Vue3App.git)
 
 ## 📫 Контакты
 
-- GitHub: (https://github.com/artEvg)
+- GitHub: https://github.com/artEvg
 - Email: artemmolchanov205@gmail.com
 
 ---
